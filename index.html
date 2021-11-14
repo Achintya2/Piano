@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Keys</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+        body{
+            background-color: #111;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .keys{
+            width:100%;
+            height:350px;
+            max-width: 880px;
+            position: relative;
+        }
+        .key{
+            position: relative;
+            border-radius: 8px;
+            display: block;
+        }
+        /* White key */
+        .key:not(.sharp){
+            float:left;
+            border: 4px solid white;
+            background-color: white;
+            width: 60px;
+            height:100%;
+            margin-right: 8px;
+        }
+        /* Black key */
+        .key.sharp{
+            position: absolute;
+            border: 4px solid black;
+            background-color: black;
+            width: 40px;
+            height:70%;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="">
+        <div class="keys">
+            <div class="key" data-key="65"></div>
+            <div class="key sharp" data-key="87" style="left:50px;"></div>
+            <div class="key" data-key="83"></div>
+            <div class="key sharp" data-key="69" style="left:124px;"></div>
+            <div class="key" data-key="68"></div>
+            <div class="key" data-key="70"></div>
+            <div class="key sharp" data-key="84" style="left:276px;"></div>
+            <div class="key" data-key="71"></div>
+            <div class="key sharp" data-key="89" style="left:352px;"></div>
+            <div class="key" data-key="72"></div>
+            <div class="key sharp" data-key="85" style="left:428px;"></div>
+            <div class="key" data-key="74"></div>
+            <div class="key" data-key="75"></div>
+            <div class="key sharp" data-key="79" style="left:580px;"></div>
+            <div class="key" data-key="76"></div>
+            <div class="key sharp" data-key="80" style="left:656px;"></div>
+            <div class="key" data-key="186"></div>
+        </div>
+        <div class="">
+            <audio src="040.wav" data-key="65"></audio>
+            <audio src="041.wav" data-key="87"></audio>
+            <audio src="042.wav" data-key="83"></audio>
+            <audio src="043.wav" data-key="69"></audio>
+            <audio src="044.wav" data-key="68"></audio>
+            <audio src="045.wav" data-key="70"></audio>
+            <audio src="046.wav" data-key="84"></audio>
+            <audio src="047.wav" data-key="71"></audio>
+            <audio src="048.wav" data-key="89"></audio>
+            <audio src="049.wav" data-key="72"></audio>
+            <audio src="050.wav" data-key="85"></audio>
+            <audio src="051.wav" data-key="74"></audio>
+            <audio src="052.wav" data-key="75"></audio>
+            <audio src="053.wav" data-key="79"></audio>
+            <audio src="054.wav" data-key="76"></audio>
+            <audio src="055.wav" data-key="80"></audio>
+            <audio src="056.wav" data-key="186"></audio>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("keyup", function(e){
+            var keyPressed = e.keyCode;
+            var key = document.querySelector(`.key[data-key="${keyPressed}"]`);
+            var audio = document.querySelector(`audio[data-key="${keyPressed}"]`);
+            
+            if(!key) return;
+            audio.play();
+        });
+    </script>
+</body>
+</html>
